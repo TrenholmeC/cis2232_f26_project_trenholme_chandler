@@ -31,7 +31,7 @@ Main color: #2F4A3A
 
 ### Removed Fields
 
-| Field Name     | Data Type     | Reason for Removal                         |                                                        |
+| Field Name     | Data Type     | Reason for Removal                         |
 | -------------- |:-------------:| -------------------------------------------|
 | currentDate    | String        | Purely temporal, independent of records    |
 | weightAchieved | float         | Derived value with little analytical value |
