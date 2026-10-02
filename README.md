@@ -36,3 +36,9 @@ Main color: #2F4A3A
 | currentDate    | String        | Purely temporal, independent of records    |
 | weightAchieved | float         | Derived value with little analytical value |
 | classMark      | float         | Derived value, independent of records      |
+
+## Calculations
+
++daysAway(LocalDate):long - represents how many days are left or passed from the due date in comparision to the date passed to the method
+
++weightAchieved():float - weight towards total grade achieved from this item
