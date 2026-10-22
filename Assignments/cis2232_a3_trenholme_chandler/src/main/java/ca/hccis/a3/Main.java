@@ -1,5 +1,6 @@
 package ca.hccis.a3;
 
+import ca.hccis.a3.cli.Clazz;
 import ca.hccis.a3.cli.PromptManager;
 import ca.hccis.a3.item.ItemManager;
 import ca.hccis.a3.jop.MainPane;
@@ -19,6 +20,8 @@ public class Main {
     private static final String cliMenu = "\nGrade Tracker App\n\nA) Add\nV) View\nX) eXit\n--> ";
     static void main() {
         ItemManager.readFromFile(folderPath, fileName);
+
+        Clazz clazz = new Clazz();
 
         Thread t1 = new Thread(Main::runCliMode); // function reference
         Thread t2 = new Thread(() -> MainPane.create(folderPath, fileName)); // anonymous function so we can pass parameters
