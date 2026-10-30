@@ -42,3 +42,17 @@ Main color: #2F4A3A
 +daysAway(LocalDate):long - represents how many days are left or passed from the due date in comparision to the date passed to the method
 
 +weightAchieved():float - weight towards total grade achieved from this item
+
+## Reports
+
+Item Type Average Report:
+
+* Based on a Class Name Input
+
+* Average Mark Calculated per Item Type
+
+### Future Report Ideas:
+
+Achieved Class Weight vs Current Average
+
+3 Largest or 3 Smallest Marks of a Class
