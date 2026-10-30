@@ -17,21 +17,47 @@ CREATE TABLE item (
     id                  INT              NOT NULL AUTO_INCREMENT,
     dueDate             VARCHAR(10)      NOT NULL,
     maxScore            FLOAT            NOT NULL,
-    actScore            FLOAT            NULL,
+    actScore            FLOAT            NOT NULL,
     weight              FLOAT            NOT NULL,
     name                VARCHAR(100)     NOT NULL,
     className           VARCHAR(100)     NOT NULL,
     priority            VARCHAR(100)     NOT NULL,
     type                VARCHAR(100)     NOT NULL,
-    percent             FLOAT            NULL,
+    percent             FLOAT            NOT NULL,
     PRIMARY KEY (id)
 );
 
 INSERT INTO item
 (dueDate, maxScore, actScore, weight, name, className, priority, type, percent)
 VALUES
+    -- CIS-2225 Windows Programming
     ('2026-09-20', 40, 40, 0.05, 'Topic 1 - Assignment', 'CIS-2225 Windows Programming', 'LOW', 'ASSIGNMENT', 1.00),
-('2026-10-04', 40, NULL, 0.05, 'Topic 2 - Assignment', 'CIS-2225 Windows Programming', 'LOW', 'ASSIGNMENT', NULL);
+    ('2026-10-04', 40, -1, 0.05, 'Topic 2 - Assignment', 'CIS-2225 Windows Programming', 'LOW', 'ASSIGNMENT', -1),
+    ('2026-09-27', 20, 17, 0.05, 'Quiz 1', 'CIS-2225 Windows Programming', 'MEDIUM', 'QUIZ', 0.85),
+    ('2026-10-11', 100, 85, 0.20, 'Midterm Exam', 'CIS-2225 Windows Programming', 'HIGH', 'EXAM', 0.85),
+    ('2026-10-18', 30, 28, 0.05, 'Lab 1 - File IO', 'CIS-2225 Windows Programming', 'LOW', 'LAB', 0.93),
+    ('2026-11-01', 100, -1, 0.30, 'Final Project', 'CIS-2225 Windows Programming', 'HIGH', 'PROJECT', -1),
+    ('2026-11-15', 100, 92, 0.30, 'Group Project Milestone 1', 'CIS-2225 Windows Programming', 'HIGH', 'PROJECT', 0.92),
+
+    -- CIS-2232 Capstone
+    ('2026-09-22', 40, 36, 0.05, 'Sprint 1 Planning Doc', 'CIS-2232 Capstone', 'LOW', 'ASSIGNMENT', 0.90),
+    ('2026-09-25', 20, 18, 0.05, 'Quiz 1', 'CIS-2232 Capstone', 'MEDIUM', 'QUIZ', 0.90),
+    ('2026-10-09', 20, 20, 0.05, 'Quiz 2', 'CIS-2232 Capstone', 'MEDIUM', 'QUIZ', 1.00),
+    ('2026-10-16', 30, 26, 0.05, 'Lab - UML Diagrams', 'CIS-2232 Capstone', 'LOW', 'LAB', 0.87),
+    ('2026-10-30', 100, 78, 0.20, 'Midterm Exam', 'CIS-2232 Capstone', 'HIGH', 'EXAM', 0.78),
+    ('2026-10-23', 50, -1, 0.10, 'Sprint 2 Deliverable', 'CIS-2232 Capstone', 'HIGH', 'PROJECT', -1),
+    ('2026-11-13', 50, -1, 0.10, 'Sprint 3 Deliverable', 'CIS-2232 Capstone', 'HIGH', 'PROJECT', -1),
+    ('2026-11-20', 50, 45, 0.10, 'Sprint 1 Deliverable', 'CIS-2232 Capstone', 'HIGH', 'PROJECT', 0.90),
+
+    -- CIS-2234 Operating Systems
+    ('2026-09-20', 40, 38, 0.05, 'Topic 1 - Processes', 'CIS-2234 Operating Systems', 'LOW', 'ASSIGNMENT', 0.95),
+    ('2026-10-09', 20, 16, 0.05, 'Quiz 1 - Scheduling', 'CIS-2234 Operating Systems', 'MEDIUM', 'QUIZ', 0.80),
+    ('2026-09-18', 30, 27, 0.05, 'Lab 1 - Threads', 'CIS-2234 Operating Systems', 'LOW', 'LAB', 0.90),
+    ('2026-10-02', 30, 24, 0.05, 'Lab 2 - Synchronization', 'CIS-2234 Operating Systems', 'MEDIUM', 'LAB', 0.80),
+    ('2026-10-16', 30, -1, 0.05, 'Lab 3 - Deadlock', 'CIS-2234 Operating Systems', 'MEDIUM', 'LAB', -1),
+    ('2026-10-16', 100, 81, 0.20, 'Midterm Exam', 'CIS-2234 Operating Systems', 'HIGH', 'EXAM', 0.81),
+    ('2026-11-06', 100, -1, 0.25, 'Final Exam', 'CIS-2234 Operating Systems', 'HIGH', 'EXAM', -1),
+    ('2026-11-10', 100, 88, 0.25, 'Final Project - Mini OS', 'CIS-2234 Operating Systems', 'HIGH', 'PROJECT', 0.88);
 
 # ALTER TABLE SkillsAssessmentSquashTechnical
 #     ADD PRIMARY KEY (id);
