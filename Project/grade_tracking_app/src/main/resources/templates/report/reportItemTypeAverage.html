@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head">
+    <title id="pageTitle">Report</title>
+</head>
+<body>
+<style scoped="scoped">input:not(.hidden) {
+    display: inline-block;
+    float: right
+}
+
+.cd {
+    color: #F00 !important;
+    font-weight: bold;
+    margin-bottom: -48px
+}
+
+label {
+    margin-right: 8px
+}
+
+table.wbb.centered {
+    display: table !important;
+}</style>
+<nav th:replace="fragments/navHeader :: navbar"></nav>
+
+
+<div class="container has-text-centered">
+    <h2 class="title is-2" th:text="#{label.report.item.type.average}">_</h2>
+
+    <form th:action="@{/report/item/typeAverage/submit}" method="post" class="wbb"
+          style="display:inline-block;text-align:left!important;margin-bottom:32px">
+        <label>Class Name: </label>
+        <input type="text" th:field="${reportInput.className}"></input>
+        <br></br>
+        <button style="display:block;margin-top:24px!important" class="centered">Submit</button>
+    </form>
+
+    <p th:if="${not #strings.isEmpty(message)}" th:text="${message}">not found</p>
+    <!--https://stackoverflow.com/a/33106495-->
+    <table class="wbb centered" style="margin-top:32px;margin-bottom:32px;width:400px" th:if="${not #lists.isEmpty(reportInput.itemTypeAverages)}">
+        <thead>
+        <tr>
+            <th>Item Type</th>
+            <th>Average Mark</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="current : ${reportInput.itemTypeAverages}">
+            <td th:text="${current.type}"></td>
+            <td th:text="${current.averageMark == null ? 'No marked items' : (#numbers.formatDecimal(current.averageMark * 100, 1, 2) + '%')}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div style="width:600px; height:350px; margin:32px auto" th:if="${not #lists.isEmpty(reportInput.itemTypeAverages)}">
+        <canvas id="itemTypeAverageChart"></canvas>
+    </div>
+
+</div>
+
+<script th:if="${not #lists.isEmpty(reportInput.itemTypeAverages)}" th:inline="javascript">
+    const itemTypeAverageData = [[${reportInput.itemTypeAverages}]];
+
+    const itemTypes = itemTypeAverageData.map(current => current.type);
+    const averageMarks = itemTypeAverageData.map(current => current.averageMark === null ? null : current.averageMark * 100);
+
+    const ctx = document.getElementById('itemTypeAverageChart');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: itemTypes,
+            datasets: [{
+                label: 'Average Mark (%)',
+                data: averageMarks,
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 100
+                }
+            }
+        }
+    });
+</script>
+
+<br></br>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>
